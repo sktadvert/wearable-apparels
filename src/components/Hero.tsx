@@ -77,11 +77,11 @@ export default function Hero() {
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
-                href="#contact"
+                href="/dashboard/rfq/new"
                 className="group relative px-8 py-4 bg-[#c9a96e] text-black font-semibold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(201,169,110,0.3)]"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Start Your Project
+                  Request a Quote
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
