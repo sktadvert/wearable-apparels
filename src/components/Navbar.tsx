@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const links = [
-  { name: "Home", href: "#home" },
   { name: "Services", href: "#services" },
-  { name: "Process", href: "#process" },
-  { name: "Work", href: "#portfolio" },
+  { name: "How It Works", href: "#process" },
+  { name: "Portfolio", href: "#portfolio" },
   { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
@@ -18,70 +17,62 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-[998] transition-all duration-500 ${
-        scrolled ? "glass-strong" : ""
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[998] transition-all duration-300 ${
+        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#b8977e] flex items-center justify-center text-black font-black text-xs">
+          <a href="#" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-md bg-[#111827] flex items-center justify-center text-white font-bold text-[10px]">
               WA
             </div>
-            <div className="hidden sm:block">
-              <span className="text-sm font-semibold text-white tracking-wide">
-                WEARABLE
-              </span>
-              <span className="text-sm font-light text-white/40 ml-1.5">
-                APPARELS
-              </span>
-            </div>
+            <span className="text-[15px] font-semibold text-[#111827] hidden sm:block">
+              Wearable Apparels
+            </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7">
             {links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-white/40 text-[13px] font-medium hover:text-white transition-colors duration-300"
+                className="text-gray-500 text-[13px] font-medium hover:text-[#111827] transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          {/* Right side */}
-          <div className="flex items-center gap-4">
+          {/* Right */}
+          <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className="hidden md:block text-white/40 text-[13px] font-medium hover:text-white transition-colors"
+              className="hidden md:block text-gray-500 text-[13px] font-medium hover:text-[#111827] transition-colors"
             >
-              Sign In
+              Log In
             </Link>
             <Link
               href="/dashboard/rfq/new"
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#b8977e] text-black text-[13px] font-semibold rounded-lg hover:bg-[#d4b896] transition-all"
+              className="px-5 py-2.5 bg-[#111827] text-white text-[13px] font-semibold rounded-lg hover:bg-[#1f2937] transition-all"
             >
-              Get a Quote
+              Get a Free Quote
             </Link>
 
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden w-10 h-10 rounded-lg glass flex items-center justify-center"
+              className="lg:hidden w-9 h-9 flex items-center justify-center"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" opacity="0.6">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
                 {open ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
               </svg>
             </button>
@@ -89,20 +80,20 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile */}
       {open && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden glass mx-4 mb-4 rounded-xl overflow-hidden"
+          className="lg:hidden bg-white border-t border-gray-100 shadow-lg"
         >
-          <div className="p-4 flex flex-col gap-1">
+          <div className="p-4 space-y-1">
             {links.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="px-4 py-3 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/[0.04] transition-all"
+                className="block px-4 py-3 text-sm text-gray-600 hover:text-[#111827] hover:bg-gray-50 rounded-lg"
               >
                 {link.name}
               </a>
@@ -110,13 +101,13 @@ export default function Navbar() {
             <Link
               href="/dashboard/rfq/new"
               onClick={() => setOpen(false)}
-              className="mt-2 px-4 py-3 bg-[#b8977e] text-black text-sm font-semibold rounded-lg text-center"
+              className="block mt-2 px-4 py-3 bg-[#111827] text-white text-sm font-semibold rounded-lg text-center"
             >
-              Get a Quote
+              Get a Free Quote
             </Link>
           </div>
         </motion.div>
       )}
-    </motion.nav>
+    </nav>
   );
 }

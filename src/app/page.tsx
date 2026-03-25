@@ -1,8 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Categories from "@/components/Categories";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
+import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -12,12 +14,14 @@ import RFQBanner from "@/components/marketing/RFQBanner";
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="noise">
+      <main>
         <Navbar />
         <Hero />
+        <Categories />
         <Services />
         <Process />
         <Portfolio />
+        <Testimonials />
         <About />
         <Contact />
         <Footer />
