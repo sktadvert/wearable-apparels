@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+}
+
+enum RFQStatus {
+  PENDING
+  REVIEWING
+  QUOTED
+  ACCEPTED
+  REJECTED
+}
+
+enum QuoteStatus {
+  SENT
+  ACCEPTED
+  REJECTED
+}
+
+enum OrderStatus {
+  CONFIRMED
+  DESIGNING
+  SAMPLING
+  PRODUCTION
+  QC
+  SHIPPING
+  DELIVERED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  company   String?
+  phone     String?
+  password  String
+  role      Role     @default(CLIENT)
+  rfqs      RFQ[]
+  orders    Order[]
+  messages  Message[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+}
+
+model RFQ {
+  id          String          @id @default(cuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectType String
+  quantity    Int
+  description String          @db.Text
+  fabricType  String?
+  colors      String?
+  sizes       String?
+  budget      String?
+  timeline    String?
+  status      RFQStatus       @default(PENDING)
+  attachments RFQAttachment[]
+  quotes      Quote[]
+  order       Order?
+  messages    Message[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model RFQAttachment {
+  id       String @id @default(cuid())
+  rfqId    String
+  rfq      RFQ    @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  fileName String
+  fileUrl  String
+  fileType String
+  fileSize Int?
+
+  @@index([rfqId])
+}
+
+model Quote {
+  id         String      @id @default(cuid())
+  rfqId      String
+  rfq        RFQ         @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  unitPrice  Float
+  totalPrice Float
+  timeline   String
+  notes      String?     @db.Text
+  status     QuoteStatus @default(SENT)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([rfqId])
+}
+
+model Order {
+  id          String        @id @default(cuid())
+  rfqId       String        @unique
+  rfq         RFQ           @relation(fields: [rfqId], references: [id])
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  status      OrderStatus   @default(CONFIRMED)
+  totalAmount Float
+  trackingNum String?
+  updates     OrderUpdate[]
+  messages    Message[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model OrderUpdate {
+  id        String      @id @default(cuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  note      String?     @db.Text
+  imageUrl  String?
+  createdAt DateTime    @default(now())
+
+  @@index([orderId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  rfqId     String?
+  rfq       RFQ?     @relation(fields: [rfqId], references: [id])
+  orderId   String?
+  order     Order?   @relation(fields: [orderId], references: [id])
+  content   String   @db.Text
+  isAdmin   Boolean  @default(false)
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([rfqId])
+  @@index([orderId])
+}
