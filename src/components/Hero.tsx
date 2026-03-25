@@ -2,119 +2,128 @@
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.5 } },
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1, ease: [0.25, 1, 0.5, 1] as const },
-  },
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
 };
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden snap-section">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       <Scene3D />
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#0a0a0a] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-transparent pointer-events-none z-0" />
+      {/* Warm gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#0a0a0a] pointer-events-none z-0" />
 
-      {/* Stepper indicator — left side */}
-      <div className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-4">
-        {["Home", "Services", "Process", "Work", "About", "Contact"].map(
-          (label, i) => (
-            <a
-              key={label}
-              href={`#${label.toLowerCase()}`}
-              className="group flex items-center gap-3"
-            >
-              <div className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-[#c9a96e] transition-all group-hover:scale-150" />
-              <span className="text-[10px] text-white/0 group-hover:text-white/50 transition-all uppercase tracking-widest whitespace-nowrap">
-                {label}
-              </span>
-            </a>
-          )
-        )}
-      </div>
-
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
-        <div className="max-w-3xl">
+        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-32">
+          {/* Left: Content */}
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.div variants={fadeUp} className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[#c9a96e] text-xs tracking-[0.25em] uppercase font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e] animate-pulse" />
-                Premium Manufacturing Partner
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#b8977e]/10 text-[#b8977e] text-xs tracking-widest uppercase font-medium border border-[#b8977e]/10">
+                Custom Apparel Manufacturing
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tight mb-8"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-8"
             >
-              <span className="block text-white">Your</span>
-              <span className="block text-white">Vision.</span>
-              <span className="block gradient-text">Our Craft.</span>
+              <span className="text-white">We Manufacture</span>
+              <br />
+              <span className="text-white">Your Clothing</span>
+              <br />
+              <span className="text-[#b8977e]">Brand.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="text-white/40 text-lg md:text-xl max-w-xl leading-relaxed mb-12"
+              className="text-white/40 text-base md:text-lg max-w-lg leading-relaxed mb-10"
             >
-              Premium cut &amp; sew manufacturing for streetwear brands
-              worldwide. From first sample to full production.
+              Full-service cut &amp; sew manufacturing for streetwear brands.
+              From your design to finished product — screen printing, embroidery,
+              private labeling, and packaging. Low MOQ, fast turnaround.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <a
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-16">
+              <Link
                 href="/dashboard/rfq/new"
-                className="group relative px-8 py-4 bg-[#c9a96e] text-black font-semibold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(201,169,110,0.3)]"
+                className="px-7 py-3.5 bg-[#b8977e] text-black font-semibold text-sm rounded-lg hover:bg-[#d4b896] transition-all"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Request a Quote
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </a>
+                Request a Quote
+              </Link>
               <a
-                href="#services"
-                className="px-8 py-4 rounded-2xl glass text-white/70 font-medium hover:text-[#c9a96e] hover:border-[#c9a96e]/30 transition-all"
+                href="#process"
+                className="px-7 py-3.5 text-white/50 text-sm font-medium border border-white/10 rounded-lg hover:border-white/20 hover:text-white/70 transition-all"
               >
-                Explore Services
+                How It Works
               </a>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div variants={fadeUp} className="flex gap-10">
+              {[
+                { value: "50+", label: "Brands Served" },
+                { value: "50 pcs", label: "Min Order" },
+                { value: "2-3 wks", label: "Turnaround" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-2xl font-bold text-white">{stat.value}</p>
+                  <p className="text-white/25 text-xs mt-1">{stat.label}</p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Stats strip */}
+          {/* Right: Photo placeholder */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="mt-24 flex gap-12"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="hidden lg:block"
           >
-            {[
-              { value: "50+", label: "Min Order" },
-              { value: "2-3", label: "Week Turnaround" },
-              { value: "100%", label: "QC Guarantee" },
-            ].map((stat) => (
-              <div key={stat.label} className="relative">
-                <p className="text-4xl font-black gradient-text">{stat.value}</p>
-                <p className="text-white/30 text-[10px] mt-1 tracking-[0.2em] uppercase">
-                  {stat.label}
+            <div className="relative">
+              {/* Main image placeholder */}
+              <div className="aspect-[4/5] rounded-2xl img-placeholder flex items-center justify-center overflow-hidden">
+                <div className="text-center">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5" opacity="0.15" className="mx-auto mb-3">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <p className="text-white/10 text-xs">Factory / Product Photo</p>
+                </div>
+              </div>
+
+              {/* Floating card overlay */}
+              <div className="absolute -bottom-6 -left-6 glass rounded-xl p-5 max-w-[220px]">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-md bg-green-500/20 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </div>
+                  <span className="text-white text-sm font-semibold">100% QC</span>
+                </div>
+                <p className="text-white/30 text-xs leading-relaxed">
+                  Every piece inspected before shipping
                 </p>
               </div>
-            ))}
+
+              {/* Small accent image */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 rounded-xl img-placeholder flex items-center justify-center">
+                <p className="text-white/10 text-[10px]">Detail Shot</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -124,15 +133,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <span className="text-[10px] text-white/30 tracking-[0.3em] uppercase">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="w-5 h-8 rounded-full border border-white/10 flex items-start justify-center pt-1.5"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#c9a96e]" />
+          <div className="w-1 h-1.5 rounded-full bg-[#b8977e]/50" />
         </motion.div>
       </motion.div>
     </section>

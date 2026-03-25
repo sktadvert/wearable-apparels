@@ -8,13 +8,11 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/marketing/SmoothScroll";
 import RFQBanner from "@/components/marketing/RFQBanner";
-import LoadingScreen from "@/components/marketing/LoadingScreen";
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <LoadingScreen />
-      <main className="grain">
+      <main className="noise">
         <Navbar />
         <Hero />
         <Services />

@@ -3,58 +3,69 @@
 import { motion } from "framer-motion";
 
 const projects = [
-  { title: "Streetwear Collection", cat: "Cut & Sew", gradient: "from-[#c9a96e]/30 via-[#c9a96e]/10 to-transparent" },
-  { title: "Premium Hoodies", cat: "Private Label", gradient: "from-[#4a6fa5]/30 via-[#4a6fa5]/10 to-transparent" },
-  { title: "Limited Drop Series", cat: "Screen Print", gradient: "from-[#8b5e3c]/30 via-[#8b5e3c]/10 to-transparent" },
-  { title: "Denim Line", cat: "Full Production", gradient: "from-[#6b7b8d]/30 via-[#6b7b8d]/10 to-transparent" },
+  { title: "Streetwear Collection", cat: "Cut & Sew", qty: "500 pcs" },
+  { title: "Premium Hoodies", cat: "Private Label", qty: "300 pcs" },
+  { title: "Limited Drop Series", cat: "Screen Print", qty: "200 pcs" },
+  { title: "Athletic Line", cat: "Full Production", qty: "1000 pcs" },
+  { title: "Denim Collection", cat: "Cut & Sew", qty: "400 pcs" },
+  { title: "Tracksuits Range", cat: "Private Label", qty: "600 pcs" },
 ];
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative py-40 px-6 lg:px-8 snap-section">
+    <section id="portfolio" className="relative py-32 px-6 lg:px-8">
+      <div className="section-divider mb-32" />
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-20"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[#c9a96e] text-xs tracking-[0.25em] uppercase font-medium mb-6">
-            Portfolio
-          </span>
-          <h2 className="text-5xl md:text-7xl font-black leading-[0.95]">
-            Crafted with
-            <br />
-            <span className="gradient-text">Precision</span>
-          </h2>
+          <div className="max-w-2xl">
+            <p className="text-[#b8977e] text-xs tracking-widest uppercase font-medium mb-4">
+              Our Work
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              Recent Projects
+            </h2>
+          </div>
+          <p className="text-white/30 text-sm max-w-sm">
+            A selection of recent manufacturing projects. Your brand could be next.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="group relative rounded-3xl overflow-hidden cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="group"
             >
-              <div className={`h-80 bg-gradient-to-br ${p.gradient} glass flex items-end p-8 transition-all duration-700 group-hover:scale-[1.02]`}>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="relative z-10">
-                  <span className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase font-medium block mb-2">
-                    {p.cat}
-                  </span>
-                  <h3 className="text-2xl font-bold text-white">
+              {/* Image placeholder */}
+              <div className="aspect-[4/3] rounded-xl img-placeholder flex items-center justify-center mb-4 overflow-hidden group-hover:border-white/10 transition-all">
+                <div className="text-center">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5" opacity="0.1" className="mx-auto mb-2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <p className="text-white/8 text-[10px]">Product Photo</p>
+                </div>
+              </div>
+
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-sm font-semibold text-white/70 group-hover:text-white transition-colors">
                     {p.title}
                   </h3>
+                  <p className="text-white/25 text-xs mt-1">{p.cat}</p>
                 </div>
-                <div className="absolute top-6 right-6 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" strokeWidth="2">
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </div>
+                <span className="text-[#b8977e]/50 text-xs font-medium">{p.qty}</span>
               </div>
             </motion.div>
           ))}
