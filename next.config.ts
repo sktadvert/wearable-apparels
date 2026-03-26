@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "wearableapparels.com" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
   transpilePackages: ["three"],

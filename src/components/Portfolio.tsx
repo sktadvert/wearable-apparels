@@ -2,15 +2,13 @@
 
 import { motion } from "framer-motion";
 
-const categories = ["All", "T-Shirts", "Hoodies", "Tracksuits", "Jackets", "Caps"];
-
 const projects = [
-  { title: "Custom Streetwear Drop", cat: "T-Shirts", qty: "200 pcs", client: "Emerging brand, USA" },
-  { title: "Premium Hoodie Line", cat: "Hoodies", qty: "150 pcs", client: "Independent label, UK" },
-  { title: "Full Tracksuit Set", cat: "Tracksuits", qty: "300 pcs", client: "Startup brand, Canada" },
-  { title: "Graphic Tee Collection", cat: "T-Shirts", qty: "500 pcs", client: "Online brand, Australia" },
-  { title: "Bomber Jacket Range", cat: "Jackets", qty: "100 pcs", client: "Designer, USA" },
-  { title: "Embroidered Cap Line", cat: "Caps", qty: "250 pcs", client: "Small brand, UK" },
+  { title: "Custom Streetwear Drop", cat: "T-Shirts", qty: "200 pcs", client: "Emerging brand, USA", img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&h=450&fit=crop" },
+  { title: "Premium Hoodie Line", cat: "Hoodies", qty: "150 pcs", client: "Independent label, UK", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=450&fit=crop" },
+  { title: "Full Tracksuit Set", cat: "Tracksuits", qty: "300 pcs", client: "Startup brand, Canada", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=450&fit=crop" },
+  { title: "Graphic Tee Collection", cat: "T-Shirts", qty: "500 pcs", client: "Online brand, Australia", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=450&fit=crop" },
+  { title: "Bomber Jacket Range", cat: "Jackets", qty: "100 pcs", client: "Designer, USA", img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=450&fit=crop" },
+  { title: "Embroidered Cap Line", cat: "Caps", qty: "250 pcs", client: "Small brand, UK", img: "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=600&h=450&fit=crop" },
 ];
 
 export default function Portfolio() {
@@ -21,37 +19,14 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+          className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center"
         >
-          <div>
-            <p className="text-[#b8977e] text-xs tracking-widest uppercase font-semibold mb-3">
-              Our Work
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#111827]">
-              Recent Manufacturing Projects
-            </h2>
-          </div>
-          <p className="text-gray-400 text-sm max-w-sm">
-            A few examples of what we&apos;ve produced for independent brands like yours.
+          <p className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3">Our Work</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">Recent Projects</h2>
+          <p className="text-slate-500 text-base leading-relaxed">
+            From streetwear drops to full collections — here are some of the projects we have manufactured for independent brands worldwide.
           </p>
         </motion.div>
-
-        {/* Category tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {categories.map((cat, i) => (
-            <button
-              key={cat}
-              className={`px-4 py-2 text-xs font-medium rounded-full transition-all ${
-                i === 0
-                  ? "bg-[#111827] text-white"
-                  : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p, i) => (
@@ -61,27 +36,23 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.4 }}
-              className="group"
+              className="group cursor-pointer"
             >
-              <div className="aspect-[4/3] rounded-xl img-placeholder flex items-center justify-center mb-4 overflow-hidden group-hover:shadow-md transition-shadow">
-                <div className="text-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8977e" strokeWidth="0.5" className="mx-auto mb-2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <path d="M21 15l-5-5L5 21" />
-                  </svg>
-                  <p className="text-gray-300 text-xs">Product Photo</p>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-4 relative">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-white text-xs font-medium bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                    {p.qty} · {p.cat}
+                  </span>
                 </div>
               </div>
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-sm font-semibold text-[#111827]">{p.title}</h3>
-                  <p className="text-gray-400 text-xs mt-1">{p.client} · {p.qty}</p>
-                </div>
-                <span className="text-xs font-medium text-[#b8977e] bg-[#b8977e]/8 px-2 py-0.5 rounded">
-                  {p.cat}
-                </span>
-              </div>
+              <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#67e500] transition-colors">{p.title}</h3>
+              <p className="text-slate-400 text-xs mt-1">{p.client}</p>
             </motion.div>
           ))}
         </div>

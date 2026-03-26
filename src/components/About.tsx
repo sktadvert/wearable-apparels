@@ -2,90 +2,88 @@
 
 import { motion } from "framer-motion";
 
+const features = [
+  { title: "Your Brand, Your Way", desc: "Custom neck labels, hang tags, packaging — every piece carries your identity, not ours.", icon: "M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" },
+  { title: "Streetwear Experts", desc: "We live in the streetwear world. Limited drops, seasonal collections, hype culture — we get it.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+  { title: "Sample Before You Commit", desc: "We produce a physical sample first. You approve fit, fabric, and finish before production starts.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+  { title: "Scale When Ready", desc: "Start with 50 pieces. Reorder 500. We grow with your brand — same quality at every volume.", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
+];
+
+const stats = [
+  { value: "50+", label: "Brands Worldwide" },
+  { value: "10K+", label: "Garments Delivered" },
+  { value: "6+", label: "Countries Served" },
+  { value: "98%", label: "Client Satisfaction" },
+];
+
 export default function About() {
   return (
-    <section id="about" className="section-pad bg-[#111827] text-white">
+    <section id="about" className="section-pad bg-[#0f172a] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Content */}
+        {/* Top: Why Choose Us */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
-            <p className="text-[#b8977e] text-xs tracking-widest uppercase font-semibold mb-3">
-              Why Choose Us
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              A Manufacturing Partner That Gets Streetwear
+            <p className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-4">Why Choose Us</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+              Manufacturing Partner That <span className="text-[#67e500]">Delivers Results</span>
             </h2>
-            <div className="space-y-4 text-gray-400 text-[15px] leading-relaxed mb-10">
-              <p>
-                We&apos;re not a massive factory that treats small brands as an afterthought.
-                We specialize in working with independent and emerging clothing brands — the ones
-                starting with 50-500 piece runs and growing from there.
-              </p>
-              <p>
-                We understand the streetwear world because we live in it. Limited drops, seasonal
-                collections, custom everything — we handle it all, from fabric sourcing to
-                your customer&apos;s doorstep.
-              </p>
-            </div>
-
-            {/* Key differentiators */}
-            <div className="space-y-4">
-              {[
-                { title: "Low Minimums", desc: "Start with just 50 pieces per style. Perfect for testing designs before scaling." },
-                { title: "Fast Turnaround", desc: "2-3 weeks from approved sample to finished production. No endless waiting." },
-                { title: "Quality First", desc: "Multi-stage QC inspection on every single piece. Samples before production." },
-                { title: "Full Service", desc: "Fabric, cut & sew, print, embroider, label, package — one partner, zero hassle." },
-              ].map((item, i) => (
-                <div key={item.title} className="flex gap-4">
-                  <div className="w-6 h-6 rounded-full bg-[#b8977e]/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b8977e" strokeWidth="3">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-white text-sm font-semibold">{item.title}</p>
-                    <p className="text-gray-500 text-sm">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-slate-400 text-base leading-relaxed mb-8">
+              We work exclusively with independent and emerging clothing brands — the ones
+              starting with 50-500 piece runs and growing into established labels. Your success is our business.
+            </p>
+            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#67e500] text-black text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-[#5acc00] transition-all">
+              Let&apos;s Talk
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </motion.div>
 
-          {/* Right: Photos */}
+          {/* Feature cards */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
             className="grid grid-cols-2 gap-4"
           >
-            <div className="aspect-[3/4] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-              <div className="text-center">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5" opacity="0.15" className="mx-auto mb-2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className={`p-6 rounded-2xl border border-white/[0.06] hover:border-[#67e500]/30 transition-all ${
+                  i === 0 ? "bg-[#67e500] text-black border-transparent" : "bg-white/[0.03]"
+                }`}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke={i === 0 ? "black" : "#67e500"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                  className="mb-4"
+                >
+                  <path d={f.icon} />
                 </svg>
-                <p className="text-white/10 text-xs">Factory Photo</p>
+                <h4 className={`text-sm font-bold mb-2 ${i === 0 ? "text-black" : "text-white"}`}>{f.title}</h4>
+                <p className={`text-xs leading-relaxed ${i === 0 ? "text-black/60" : "text-slate-500"}`}>{f.desc}</p>
               </div>
-            </div>
-            <div className="aspect-[3/4] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mt-8">
-              <div className="text-center">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="0.5" opacity="0.15" className="mx-auto mb-2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
-                </svg>
-                <p className="text-white/10 text-xs">Production Process</p>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </div>
+
+        {/* Bottom: Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10"
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-4xl lg:text-5xl font-extrabold text-[#67e500] mb-2">{s.value}</p>
+                <p className="text-slate-500 text-sm uppercase tracking-wider">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

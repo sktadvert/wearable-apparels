@@ -1,119 +1,136 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+const slides = [
+  {
+    img: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=1920&h=1080&fit=crop&crop=top&q=90",
+    line1: "PREMIUM",
+    line2: "JACKETS",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=1920&h=1080&fit=crop&crop=top&q=90",
+    line1: "CUSTOM",
+    line2: "JOGGERS",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=1920&h=1080&fit=crop&crop=top&q=90",
+    line1: "CUSTOM",
+    line2: "T-SHIRTS",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1920&h=1080&fit=crop&crop=top&q=90",
+    line1: "PREMIUM",
+    line2: "HOODIES",
+  },
+];
+
+const features = [
+  { num: "01", title: "Low Minimums", desc: "Start from just 50 pieces per style" },
+  { num: "02", title: "Premium Quality", desc: "Multi-stage QC on every piece" },
+  { num: "03", title: "Fast Turnaround", desc: "2-3 weeks sample to delivery" },
+];
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = slides[current];
+
   return (
-    <section id="home" className="relative bg-[#f8f7f4] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Content */}
+    <section id="home" className="relative h-screen overflow-hidden">
+      {/* Background slides */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={slide.img}
+            alt={slide.line1}
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Giant centered text */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <AnimatePresence mode="wait">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+            key={current}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#b8977e]/10 text-[#b8977e] text-xs font-semibold tracking-wide uppercase mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#b8977e]" />
-                For Emerging &amp; Independent Brands
-              </span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] text-[#111827] mb-6"
+            <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] text-white tracking-tight"
+              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.4)" }}
             >
-              Launch Your Clothing Brand — We Handle Manufacturing
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              transition={{ duration: 0.5 }}
-              className="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg"
+              {slide.line1}
+            </h1>
+            <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] tracking-tight"
+              style={{ color: "transparent", WebkitTextStroke: "2px rgba(255,255,255,0.5)" }}
             >
-              Starting a clothing line? We make it easy. Custom cut &amp; sew, printing,
-              embroidery, labeling, and packaging — starting from just 50 pieces.
-              Perfect for new and growing streetwear brands.
-            </motion.p>
-
-            <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3 mb-10">
-              <Link
-                href="/dashboard/rfq/new"
-                className="px-7 py-3.5 bg-[#111827] text-white text-sm font-semibold rounded-lg hover:bg-[#1f2937] transition-all"
-              >
-                Get a Free Quote
-              </Link>
-              <a
-                href="#process"
-                className="px-7 py-3.5 text-[#111827] text-sm font-medium border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-all"
-              >
-                How It Works
-              </a>
-            </motion.div>
-
-            {/* Trust stats */}
-            <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex gap-8 pt-6 border-t border-gray-200">
-              {[
-                { value: "50+", label: "Brands Served" },
-                { value: "50 pcs", label: "Min Order" },
-                { value: "2-3 Wks", label: "Turnaround" },
-                { value: "100%", label: "QC Rate" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-xl font-bold text-[#111827]">{stat.value}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
+              {slide.line2}
+            </h1>
           </motion.div>
-
-          {/* Right: Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="hidden lg:block"
-          >
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl img-placeholder flex items-center justify-center overflow-hidden">
-                <div className="text-center">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b8977e" strokeWidth="0.5" className="mx-auto mb-3">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <path d="M21 15l-5-5L5 21" />
-                  </svg>
-                  <p className="text-[#b8977e]/40 text-sm font-medium">Factory / Product Hero Image</p>
-                  <p className="text-gray-300 text-xs mt-1">Recommended: 800x600px</p>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3 border border-gray-100">
-                <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#111827]">Quality Verified</p>
-                  <p className="text-xs text-gray-400">Every piece inspected</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        </AnimatePresence>
       </div>
 
-      {/* Bottom wave */}
-      <div className="h-16 bg-gradient-to-b from-[#f8f7f4] to-white" />
+      {/* Left/Right arrows */}
+      <button
+        onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="group-hover:stroke-black"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+      </button>
+      <button
+        onClick={() => setCurrent((current + 1) % slides.length)}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="group-hover:stroke-black"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+      </button>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-[220px] lg:bottom-[200px] left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        {slides.map((_, i) => (
+          <button key={i} onClick={() => setCurrent(i)}
+            className={`h-1 rounded-full transition-all duration-300 ${i === current ? "w-10 bg-[#67e500]" : "w-6 bg-white/30"}`}
+          />
+        ))}
+      </div>
+
+      {/* Bottom-right feature tiles */}
+      <div className="absolute bottom-0 right-0 z-20 hidden lg:flex">
+        {features.map((f, i) => (
+          <div key={f.num}
+            className={`px-10 py-10 w-[280px] ${
+              i === 0 ? "bg-[#67e500] text-black rounded-tl-[40px]"
+              : i === 1 ? "bg-[#006837] text-white"
+              : "bg-[#004c28] text-white"
+            }`}
+          >
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold mb-5 border-2 ${
+              i === 0 ? "bg-transparent border-black/20 text-black" : "bg-transparent border-[#67e500]/40 text-[#67e500]"
+            }`}>{f.num}</div>
+            <h3 className="text-xl font-extrabold mb-2">{f.title}</h3>
+            <p className={`text-sm leading-relaxed ${i === 0 ? "text-black/60" : "text-white/60"}`}>{f.desc}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -4,57 +4,53 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: "✂️",
     title: "Custom Cut & Sew",
-    desc: "From your design to finished garment. T-shirts, hoodies, joggers, jackets — any style. We handle pattern making, grading, and full construction.",
+    desc: "From your design to finished garment. T-shirts, hoodies, joggers, jackets — pattern making, grading, and full construction.",
+    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop",
   },
   {
-    icon: "🎨",
     title: "Screen Printing",
-    desc: "Vibrant, durable prints in up to 12 colors. Plastisol, water-based, or discharge inks. Perfect for graphic tees and streetwear.",
+    desc: "Vibrant, durable prints in up to 12 colors. Plastisol, water-based, or discharge inks for graphic tees and streetwear.",
+    img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=400&fit=crop",
   },
   {
-    icon: "🧵",
     title: "Embroidery",
-    desc: "Premium embroidery for logos and custom artwork. Flat, 3D puff, and chain stitch options. Clean stitching that lasts.",
+    desc: "Premium embroidery for logos and artwork. Flat, 3D puff, and chain stitch. Clean stitching that lasts.",
+    img: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&h=400&fit=crop",
   },
   {
-    icon: "🏷️",
     title: "Private Labeling",
-    desc: "Your brand, front and center. Woven labels, hang tags, neck labels, care labels — complete branding for your clothing line.",
+    desc: "Woven labels, hang tags, neck labels, care labels — complete branding for your clothing line.",
+    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
   },
   {
-    icon: "📦",
     title: "Custom Packaging",
-    desc: "Branded polybags, tissue paper, stickers, and mailer boxes. Create an unboxing experience your customers remember.",
+    desc: "Branded polybags, tissue paper, stickers, mailer boxes. An unboxing experience your customers remember.",
+    img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
   },
   {
-    icon: "🌍",
     title: "Fabric Sourcing",
-    desc: "Access to premium fabrics worldwide. Cotton, French terry, fleece, nylon, custom blends. We find the right fabric for your design.",
+    desc: "Premium fabrics worldwide. Cotton, French terry, fleece, nylon, custom blends — we find the right fabric.",
+    img: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=400&fit=crop",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="section-pad bg-white">
+    <section id="services" className="section-pad bg-[#f7f5f2]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <p className="text-[#b8977e] text-xs tracking-widest uppercase font-semibold mb-3">
-            What We Do
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#111827] mb-4">
-            Everything You Need to Launch Your Clothing Line
+          <p className="text-[#67e500] text-sm tracking-widest uppercase font-bold mb-4">Our Services</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0f172a] mb-5">
+            Everything You Need to Launch Your Line
           </h2>
-          <p className="text-gray-500 leading-relaxed">
+          <p className="text-slate-500 text-lg leading-relaxed">
             From a single design idea to a fully branded, packaged product ready to sell.
-            No experience needed — we guide you through every step.
           </p>
         </motion.div>
 
@@ -66,15 +62,19 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.4 }}
-              className="bg-[#f8f7f4] rounded-xl p-7 card-hover group"
+              className="bg-white rounded-2xl overflow-hidden card-hover group border border-transparent hover:border-[#67e500]/20"
             >
-              <span className="text-2xl mb-4 block">{s.icon}</span>
-              <h3 className="text-base font-semibold text-[#111827] mb-2 group-hover:text-[#b8977e] transition-colors">
-                {s.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {s.desc}
-              </p>
+              <div className="aspect-[3/2] overflow-hidden">
+                <img
+                  src={s.img}
+                  alt={s.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-[#0f172a] mb-2 group-hover:text-[#67e500] transition-colors">{s.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

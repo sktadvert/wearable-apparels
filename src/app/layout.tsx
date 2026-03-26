@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import Script from "next/script";
+import FloatingButtons from "@/components/FloatingButtons";
+import QuoteModal from "@/components/QuoteModal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -46,7 +48,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          {children}
+          <FloatingButtons />
+          <QuoteModal />
+        </SessionProvider>
 
         {/* Umami Analytics */}
         {process.env.NEXT_PUBLIC_UMAMI_URL && (

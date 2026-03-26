@@ -1,81 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #111827;
-  --color-accent: #1a1a2e;
-  --color-warm: #b8977e;
-  --color-warm-light: #d4b896;
+  --color-primary: #0f172a;
+  --color-accent: #67e500;
+  --color-accent-dark: #006837;
+  --color-accent-darker: #004c28;
+  --color-warm: #67e500;
   --color-bg: #ffffff;
-  --color-bg-alt: #f8f7f4;
-  --color-bg-dark: #111827;
-  --color-text: #1a1a2e;
-  --color-text-light: #6b7280;
-  --color-border: #e5e7eb;
+  --color-bg-alt: #f8f8f8;
+  --color-bg-dark: #202020;
+  --color-text: #1e293b;
+  --color-text-light: #636363;
+  --color-border: #e9e9e9;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
   background: #ffffff;
-  color: #1a1a2e;
+  color: #1e293b;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: #b8977e;
-  color: #fff;
+  background: #67e500;
+  color: #000;
 }
 
-/* Section backgrounds */
-.bg-light { background: #ffffff; }
-.bg-cream { background: #f8f7f4; }
-.bg-dark { background: #111827; color: #ffffff; }
+.section-pad { padding: 5rem 1.5rem; }
+@media (min-width: 1024px) { .section-pad { padding: 7rem 2rem; } }
 
-/* Accent text */
-.text-warm { color: #b8977e; }
-
-/* Section padding */
-.section-pad { padding: 6rem 1.5rem; }
-
-@media (min-width: 1024px) {
-  .section-pad { padding: 8rem 2rem; }
-}
-
-/* Divider */
-.divider {
-  height: 1px;
-  background: #e5e7eb;
-}
-
-/* Card hover */
-.card-hover {
-  transition: all 0.3s ease;
-}
+.card-hover { transition: all 0.3s ease; }
 .card-hover:hover {
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
 }
 
-/* Image placeholder */
 .img-placeholder {
-  background: #f3f1ee;
-  border: 1px dashed #d6d3cd;
+  background: linear-gradient(135deg, #f1ede8 0%, #e8e2da 100%);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f8f7f4; }
+::-webkit-scrollbar-track { background: #f8f8f8; }
 ::-webkit-scrollbar-thumb { background: #d6d3cd; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #b8977e; }
+::-webkit-scrollbar-thumb:hover { background: #67e500; }
 
-/* Dark section glass */
-.glass-dark {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.btn-glow {
+  position: relative;
+  overflow: hidden;
 }
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+.btn-glow:hover::before { left: 100%; }
 
 canvas { touch-action: none; }
