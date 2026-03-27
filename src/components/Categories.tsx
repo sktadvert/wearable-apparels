@@ -7,39 +7,74 @@ const categories = [
   { name: "hoodies", slug: "hoodies", img: "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&h=500&fit=crop&crop=top" },
   { name: "caps & beanies", slug: "caps", img: "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=600&h=500&fit=crop" },
   { name: "joggers", slug: "joggers", img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&h=500&fit=crop&crop=top" },
-  { name: "jackets", slug: "jackets", img: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600&h=500&fit=crop&crop=top" },
-  { name: "tracksuits", slug: "tracksuits", img: "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&h=500&fit=crop&crop=faces&q=90" },
+  { name: "jackets", slug: "jackets", img: "/images/jacket 2.jpeg" },
+  { name: "tracksuits", slug: "tracksuits", img: "/images/Tracksuit 2.jpeg" },
 ];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 export default function Categories() {
   return (
-    <section className="section-pad bg-white">
+    <section className="bg-white pt-24 lg:pt-36 pb-20 lg:pb-28 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-14 flex flex-col items-center"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          <p className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-6">
+          <motion.p
+            initial={{ opacity: 0, letterSpacing: "0.1em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.3em" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-6"
+          >
             Your Brand, Our Craftsmanship
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0f172a] leading-[1.1] text-center">
-            We Manufacture <span className="font-extrabold italic">Custom Apparel</span>
+          </motion.p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0f172a] leading-[1.15] font-semibold">
+            We Manufacture <span className="font-extrabold italic">Custom</span>
             <br />
-            <span className="text-slate-400 text-2xl sm:text-3xl md:text-4xl font-light">for brands that demand excellence.</span>
+            <span className="font-extrabold italic">Apparel</span>
           </h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-slate-400 text-xl sm:text-2xl md:text-3xl font-light mt-4"
+          >
+            for brands that demand excellence.
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {categories.map((cat, i) => (
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+        >
+          {categories.map((cat) => (
             <motion.a
               key={cat.name}
               href={`/catalog/${cat.slug}`}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.4 }}
+              variants={item}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
               className="group relative aspect-[6/5] rounded-2xl overflow-hidden cursor-pointer"
             >
               <img
@@ -47,18 +82,15 @@ export default function Categories() {
                 alt={cat.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              {/* Dark gradient overlay on hover */}
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500" />
-
-              {/* Label — center bottom */}
               <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/60 via-transparent to-transparent">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white uppercase tracking-widest text-center mb-6 drop-shadow-lg">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white uppercase tracking-widest text-center mb-6 drop-shadow-lg group-hover:tracking-[0.2em] transition-all duration-500">
                   {cat.name}
                 </h3>
               </div>
             </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -43,49 +43,49 @@ const faqs: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "How do you ensure quality control?",
-      a: "Every garment goes through multi-stage QC inspection — from raw material check, through in-line production monitoring, to final piece-by-piece inspection before packing. We check stitching, measurements, color accuracy, print quality, and overall finish. Photos and videos of finished products are shared before shipping."
+      a: "Every garment goes through multi-stage QC inspection — from raw material check, through in-line production monitoring, to final piece-by-piece inspection before packing. We check stitching, measurements, color accuracy, print quality, and overall finish."
     },
     {
       q: "Do you provide production updates?",
       a: "Absolutely. We send regular photo and video updates at key stages — fabric sourcing, cutting, sewing, printing/embroidery, QC, and packing. You know exactly where your order stands at all times."
     },
     {
-      q: "What happens if there is a quality issue with my order?",
-      a: "We stand behind our work. If any garments don't meet the agreed specifications, we will remake them at no extra cost. We photograph every batch before shipping so issues are caught early. Our goal is long-term partnerships, not one-time transactions."
+      q: "What happens if there is a quality issue?",
+      a: "We stand behind our work. If any garments don't meet the agreed specifications, we will remake them at no extra cost. We photograph every batch before shipping so issues are caught early."
     },
     {
       q: "Can you handle large volume orders?",
-      a: "Yes. While our MOQ starts at 50 pieces, our facility can handle orders up to 10,000+ units per month. We scale production based on your needs — whether it is a 50-piece test run or a 5,000-piece seasonal collection."
+      a: "Yes. While our MOQ starts at 50 pieces, our facility can handle orders up to 10,000+ units per month. We scale production based on your needs."
     },
     {
       q: "Do you offer tech pack or design assistance?",
-      a: "Yes. If you have a rough sketch, reference image, or even just an idea — our design team can help create a tech pack with detailed specs. We can also work from your existing tech packs if you already have them."
+      a: "Yes. If you have a rough sketch, reference image, or even just an idea — our design team can help create a tech pack with detailed specs. We can also work from your existing tech packs."
     },
   ],
   customization: [
     {
       q: "What printing methods do you offer?",
-      a: "We offer screen printing (plastisol & water-based), DTF (Direct-to-Film), DTG (Direct-to-Garment), puff printing, sublimation, heat transfer, and discharge printing. Each method has its strengths — we help you choose the best one for your design and budget."
+      a: "We offer screen printing (plastisol & water-based), DTF (Direct-to-Film), DTG (Direct-to-Garment), puff printing, sublimation, heat transfer, and discharge printing."
     },
     {
       q: "Do you offer embroidery services?",
-      a: "Yes. We provide flat embroidery, 3D puff embroidery, chain stitch, and appliqué work. Our embroidery machines handle intricate logos and designs with precision. We can embroider on t-shirts, hoodies, caps, jackets, and more."
+      a: "Yes. We provide flat embroidery, 3D puff embroidery, chain stitch, and appliqué work. Our embroidery machines handle intricate logos and designs with precision."
     },
     {
       q: "Can I add my own brand labels and tags?",
-      a: "Absolutely — private labeling is one of our core services. We create custom woven labels, printed labels, hang tags, care labels, and size tags. Your brand identity is applied to every piece so it looks like it came from your own factory."
+      a: "Absolutely — private labeling is one of our core services. We create custom woven labels, printed labels, hang tags, care labels, and size tags."
     },
     {
       q: "What fabrics and materials do you work with?",
-      a: "We work with cotton (ring-spun, combed, organic), polyester, tri-blend, French terry, fleece, nylon, spandex blends, mesh, satin, and more. If you need a specific fabric, we can source it. We also provide fabric swatches before production."
+      a: "We work with cotton (ring-spun, combed, organic), polyester, tri-blend, French terry, fleece, nylon, spandex blends, mesh, satin, and more."
     },
     {
       q: "Can you do custom packaging?",
-      a: "Yes. We offer branded polybags, tissue paper wrapping, custom mailer boxes, hang tags, stickers, and thank-you cards. Your unboxing experience is part of your brand — we help make it memorable."
+      a: "Yes. We offer branded polybags, tissue paper wrapping, custom mailer boxes, hang tags, stickers, and thank-you cards."
     },
     {
       q: "How do you ensure accurate color matching?",
-      a: "We use Pantone color references for precise matching. For prints, we do color proofs before full production. We also send sample photos under natural lighting so you can verify colors before we proceed."
+      a: "We use Pantone color references for precise matching. For prints, we do color proofs before full production."
     },
   ],
   shipping: [
@@ -95,19 +95,19 @@ const faqs: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "What shipping methods do you offer?",
-      a: "We offer air freight (DHL, FedEx, UPS — 5-7 days), sea freight (for large orders — 15-30 days), and economy options. Shipping costs depend on order weight, volume, and destination. We provide shipping quotes alongside production quotes."
+      a: "We offer air freight (DHL, FedEx, UPS — 5-7 days), sea freight (for large orders — 15-30 days), and economy options."
     },
     {
-      q: "Can I use my own shipping account or freight forwarder?",
-      a: "Yes, many clients prefer to use their own DHL/FedEx/UPS accounts or third-party freight forwarders. We can ship to your forwarder's warehouse or directly to your door — whatever works best for your business."
+      q: "Can I use my own shipping account?",
+      a: "Yes, many clients prefer to use their own DHL/FedEx/UPS accounts or third-party freight forwarders. We can ship to your forwarder's warehouse or directly to your door."
     },
     {
       q: "How can I track my shipment?",
-      a: "Once your order ships, we provide a tracking number and carrier details. You can track your package in real-time. We also notify you at key milestones — when it is dispatched, in transit, and delivered."
+      a: "Once your order ships, we provide a tracking number and carrier details. You can track your package in real-time."
     },
     {
       q: "Do you handle customs and duties?",
-      a: "We prepare all export documentation including commercial invoices, packing lists, and certificates of origin. Import duties and taxes at your destination are the buyer's responsibility — but we guide you on what to expect based on your country."
+      a: "We prepare all export documentation including commercial invoices, packing lists, and certificates of origin. Import duties and taxes at your destination are the buyer's responsibility."
     },
   ],
 };
@@ -126,98 +126,117 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-28 bg-[#0f172a]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-20 sm:py-28 lg:py-32 bg-[#0f172a]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
 
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <p className="text-[#67e500] text-sm font-semibold tracking-[3px] uppercase mb-3">
-            Got Questions?
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Everything you need to know about working with Wearable Apparels.
-            Can&apos;t find what you&apos;re looking for? Reach out on WhatsApp.
-          </p>
-        </div>
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-[300px_1fr] gap-16 lg:gap-20">
 
-        {/* Category Tabs — horizontal centered pills */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => switchCategory(cat.id)}
-              className={`
-                px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-semibold
-                tracking-wide transition-all duration-200
-                ${
-                  activeCategory === cat.id
-                    ? "bg-[#67e500] text-[#0f172a] shadow-[0_0_18px_rgba(103,229,0,0.25)]"
-                    : "border border-slate-600 text-slate-400 hover:border-slate-400 hover:text-white"
-                }
-              `}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+          {/* LEFT — Heading + Category Nav */}
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="text-[#67e500] text-xs font-semibold uppercase tracking-[0.2em] mb-4">
+              Support
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+              Frequently Asked
+              <br />
+              Questions
+            </h2>
+            <p className="text-slate-500 text-sm leading-relaxed mb-10">
+              Everything you need to know about working with us.
+            </p>
 
-        {/* Accordion Cards */}
-        <div className="flex flex-col gap-4">
-          {faqs[activeCategory]?.map((faq, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div
-                key={i}
-                className={`
-                  rounded-xl transition-all duration-200
-                  ${isOpen ? "bg-white/[0.07] ring-1 ring-[#67e500]/20" : "bg-white/[0.04] hover:bg-white/[0.06]"}
-                `}
-              >
+            {/* Category Nav */}
+            <div className="flex flex-row lg:flex-col gap-1.5 flex-wrap">
+              {categories.map((cat) => (
                 <button
-                  onClick={() => toggleFaq(i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 sm:px-8 sm:py-6 text-left"
-                >
-                  <span
-                    className={`text-[15px] sm:text-base font-medium leading-snug ${
-                      isOpen ? "text-white" : "text-slate-200"
-                    }`}
-                  >
-                    {faq.q}
-                  </span>
-
-                  {/* Toggle icon */}
-                  <span
-                    className={`
-                      shrink-0 w-8 h-8 rounded-full flex items-center justify-center
-                      text-lg font-light transition-all duration-200 select-none
-                      ${isOpen ? "bg-[#67e500] text-[#0f172a]" : "bg-white/10 text-slate-400"}
-                    `}
-                  >
-                    {isOpen ? "\u2212" : "+"}
-                  </span>
-                </button>
-
-                {/* Answer — expand/collapse */}
-                <div
+                  key={cat.id}
+                  onClick={() => switchCategory(cat.id)}
                   className={`
-                    overflow-hidden transition-all duration-300 ease-in-out
-                    ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+                    px-4 py-2.5 rounded-md text-[13px] font-medium text-left
+                    transition-all duration-200
+                    ${
+                      activeCategory === cat.id
+                        ? "bg-[#67e500]/10 text-[#67e500]"
+                        : "text-slate-500 hover:text-slate-300 hover:bg-white/[0.03]"
+                    }
                   `}
                 >
-                  <div className="px-6 pb-5 sm:px-8 sm:pb-6">
-                    <p className="text-slate-400 text-sm sm:text-[15px] leading-relaxed">
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT — Accordion */}
+          <div>
+            {faqs[activeCategory]?.map((faq, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div
+                  key={i}
+                  className={`
+                    border-b border-white/[0.06]
+                    ${i === 0 ? "border-t border-white/[0.06]" : ""}
+                  `}
+                >
+                  <button
+                    onClick={() => toggleFaq(i)}
+                    className="w-full flex items-center justify-between gap-8 py-6 text-left group"
+                  >
+                    <span
+                      className={`text-[15px] font-medium leading-relaxed transition-colors duration-200 ${
+                        isOpen ? "text-white" : "text-slate-400 group-hover:text-slate-200"
+                      }`}
+                    >
+                      {faq.q}
+                    </span>
+
+                    {/* Plus / Minus toggle */}
+                    <div
+                      className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        isOpen
+                          ? "bg-[#67e500] text-black"
+                          : "bg-white/[0.06] text-slate-500 group-hover:bg-white/[0.1]"
+                      }`}
+                    >
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      >
+                        {isOpen ? (
+                          <path d="M2 6h8" />
+                        ) : (
+                          <>
+                            <path d="M6 2v8" />
+                            <path d="M2 6h8" />
+                          </>
+                        )}
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Answer */}
+                  <div
+                    className={`
+                      overflow-hidden transition-all duration-300 ease-in-out
+                      ${isOpen ? "max-h-[500px] opacity-100 pb-6" : "max-h-0 opacity-0"}
+                    `}
+                  >
+                    <p className="text-slate-500 text-sm leading-[1.8] pr-12">
                       {faq.a}
                     </p>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-
       </div>
     </section>
   );

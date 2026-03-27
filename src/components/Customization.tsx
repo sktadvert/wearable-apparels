@@ -57,14 +57,14 @@ const allOptions = [
 
 export default function Customization() {
   return (
-    <section className="py-12 sm:py-20 bg-[#f8f8f8]">
+    <section className="mt-16 sm:mt-24 pt-16 sm:pt-24 pb-12 sm:pb-20 bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header — same style as sialkotstride */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-14"
+          className="text-center mx-auto mb-14"
         >
           <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#0f172a] mb-2">
             Customization <span className="font-extrabold italic">Options</span>

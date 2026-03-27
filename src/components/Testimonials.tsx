@@ -175,7 +175,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-14 flex flex-col items-center"
+          className="text-center mx-auto mb-14"
         >
           <p className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3">Trusted Partners</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">

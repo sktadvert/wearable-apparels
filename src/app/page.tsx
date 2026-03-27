@@ -28,9 +28,9 @@ export default function Home() {
         <Process />
         <Portfolio />
         <Testimonials />
-        <About />
+        {/* <About /> */}
         <PaymentOptions />
-        <FAQ />
+        {/* <FAQ /> */}
         <CTASection />
         <Footer />
         <RFQBanner />

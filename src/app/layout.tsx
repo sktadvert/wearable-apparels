@@ -87,11 +87,12 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <SessionProvider>
+        {/* SessionProvider disabled until DB is connected */}
+        {/* <SessionProvider refetchInterval={0} refetchOnWindowFocus={false}> */}
           {children}
           <FloatingButtons />
           <QuoteModal />
-        </SessionProvider>
+        {/* </SessionProvider> */}
 
         {/* Umami Analytics */}
         {process.env.NEXT_PUBLIC_UMAMI_URL && (

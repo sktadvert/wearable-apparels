@@ -33,42 +33,68 @@ const steps = [
   },
 ];
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function Process() {
   return (
-    <section id="process" className="section-pad bg-white">
+    <section id="process" className="bg-white pt-24 sm:pt-36 pb-14 lg:pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center"
+          transition={{ duration: 0.6 }}
+          className="text-center mx-auto mb-16"
         >
-          <p className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3">How It Works</p>
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3"
+          >
+            How It Works
+          </motion.p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">From Your Idea to Finished Product</h2>
           <p className="text-slate-500 text-base sm:text-lg leading-relaxed">A simple 4-step process. No experience needed — we guide you through everything.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
+              variants={item}
+              whileHover={{ y: -10 }}
               className="group"
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
-                <img src={step.img} alt={step.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={step.img} alt={step.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 {/* Number badge removed */}
               </div>
-              <h3 className="text-lg font-bold text-[#0f172a] mb-2 text-center">{step.title}</h3>
+              <h3 className="text-lg font-bold text-[#0f172a] mb-2 text-center group-hover:text-[#67e500] transition-colors duration-300">{step.title}</h3>
               <p className="text-slate-500 text-sm leading-relaxed text-center">{step.desc}</p>
             </motion.div>
           ))}
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

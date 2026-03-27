@@ -14,12 +14,13 @@ const payments = [
 
 export default function PaymentOptions() {
   return (
-    <section className="py-16 bg-white">
+    <section className="pt-16 pb-24 sm:pb-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mb-10"
         >
           <h2 className="text-4xl md:text-5xl text-[#0f172a] text-center">
@@ -28,13 +29,18 @@ export default function PaymentOptions() {
         </motion.div>
 
         <div className="inline-flex flex-wrap items-center justify-center gap-5">
-          {payments.map((p) => (
-            <div
+          {payments.map((p, i) => (
+            <motion.div
               key={p.name}
-              className="w-[140px] h-[80px] rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm hover:shadow-md hover:border-[#67e500]/30 transition-all p-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              whileHover={{ y: -5, scale: 1.05 }}
+              className="w-[140px] h-[80px] rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm hover:shadow-lg hover:border-[#67e500]/30 transition-all p-3"
             >
               <img src={p.logo} alt={p.name} className="max-h-[40px] max-w-[110px] object-contain" />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
