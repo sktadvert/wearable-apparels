@@ -16,8 +16,6 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="relative max-w-3xl mx-auto flex flex-col items-center"
           >
-            <p className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-6">Get in Touch</p>
-
             <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.05] text-center">
               Ready to Start
               <br />

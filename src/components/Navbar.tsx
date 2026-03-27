@@ -56,7 +56,7 @@ export default function Navbar() {
             className="flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-[#f5f5f5] transition-all duration-200 group">
             <span className="text-xl w-9 h-9 flex items-center justify-center rounded-lg bg-[#f0f0f0] group-hover:bg-white group-hover:shadow-sm transition-all shrink-0">{item.icon}</span>
             <div className="min-w-0">
-              <p className="text-[13px] font-semibold text-[#1a1a2e] group-hover:text-[#006837] transition-colors leading-tight">{item.name}</p>
+              <p className="text-[13px] font-semibold text-[#1a1a2e] group-hover:text-[#67e500] transition-colors leading-tight">{item.name}</p>
               <p className="text-[10.5px] text-slate-400 leading-tight mt-0.5">{item.desc}</p>
             </div>
           </Link>
@@ -73,9 +73,7 @@ export default function Navbar() {
           scrolled ? "shadow-xl" : ""
         }`}
         style={{
-          background: scrolled
-            ? "linear-gradient(135deg, #1a365d 0%, #1e293b 40%, #0f172a 100%)"
-            : "linear-gradient(135deg, #2d5a9e 0%, #1e3a6e 35%, #162544 65%, #0f172a 100%)"
+          background: "#0f172a"
         }}
         onMouseLeave={() => setActiveMenu(null)}
       >
@@ -94,14 +92,14 @@ export default function Navbar() {
             {/* ── Desktop Nav Links (centered) ── */}
             <div className="hidden lg:flex items-center h-full flex-1 justify-center gap-1">
               <Link href="/"
-                className="h-full flex items-center px-3 text-white/80 text-[12px] font-medium hover:text-white transition-colors"
+                className="h-full flex items-center px-3 text-white/70 text-[12px] font-medium hover:text-[#67e500] transition-colors"
                 onMouseEnter={() => setActiveMenu(null)}>
                 Home
               </Link>
 
               {/* Products */}
               <div className="h-full flex items-center" onMouseEnter={() => setActiveMenu("products")}>
-                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "products" ? "text-white" : "text-white/80 hover:text-white"}`}>
+                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "products" ? "text-[#67e500]" : "text-white/70 hover:text-[#67e500]"}`}>
                   Products
                   <svg className={`w-3 h-3 transition-transform duration-200 ${activeMenu === "products" ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -109,7 +107,7 @@ export default function Navbar() {
 
               {/* Services */}
               <div className="h-full flex items-center" onMouseEnter={() => setActiveMenu("services")}>
-                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "services" ? "text-white" : "text-white/80 hover:text-white"}`}>
+                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "services" ? "text-[#67e500]" : "text-white/70 hover:text-[#67e500]"}`}>
                   Our Services
                   <svg className={`w-3 h-3 transition-transform duration-200 ${activeMenu === "services" ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -117,24 +115,24 @@ export default function Navbar() {
 
               {/* Customization */}
               <div className="h-full flex items-center" onMouseEnter={() => setActiveMenu("customization")}>
-                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "customization" ? "text-white" : "text-white/80 hover:text-white"}`}>
+                <button className={`h-full flex items-center gap-1.5 px-3 text-[12px] font-medium transition-colors ${activeMenu === "customization" ? "text-[#67e500]" : "text-white/70 hover:text-[#67e500]"}`}>
                   Customization
                   <svg className={`w-3 h-3 transition-transform duration-200 ${activeMenu === "customization" ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
               </div>
 
               <a href="#portfolio"
-                className="h-full flex items-center px-4 text-white/80 text-[12.5px] font-medium hover:text-white transition-colors"
+                className="h-full flex items-center px-3 text-white/70 text-[12px] font-medium hover:text-[#67e500] transition-colors"
                 onMouseEnter={() => setActiveMenu(null)}>
                 Portfolio
               </a>
               <a href="#about"
-                className="h-full flex items-center px-4 text-white/80 text-[12.5px] font-medium hover:text-white transition-colors"
+                className="h-full flex items-center px-3 text-white/70 text-[12px] font-medium hover:text-[#67e500] transition-colors"
                 onMouseEnter={() => setActiveMenu(null)}>
                 About Us
               </a>
               <a href="#contact"
-                className="h-full flex items-center px-4 text-white/80 text-[12.5px] font-medium hover:text-white transition-colors"
+                className="h-full flex items-center px-3 text-white/70 text-[12px] font-medium hover:text-[#67e500] transition-colors"
                 onMouseEnter={() => setActiveMenu(null)}>
                 Contact
               </a>
@@ -170,7 +168,7 @@ export default function Navbar() {
               {/* GET STARTED */}
               <button
                 onClick={() => document.dispatchEvent(new Event("openQuoteModal"))}
-                className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 bg-white text-[#0f172a] text-[12px] font-bold rounded-full hover:bg-[#67e500] hover:text-[#0f172a] hover:shadow-[0_0_20px_rgba(103,229,0,0.3)] transition-all duration-300 cursor-pointer">
+                className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 bg-[#67e500] text-[#0f172a] text-[12px] font-bold rounded-full hover:bg-[#5acc00] hover:shadow-[0_0_20px_rgba(103,229,0,0.3)] transition-all duration-300 cursor-pointer">
                 Get Started
               </button>
 
@@ -215,7 +213,7 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
               className="lg:hidden overflow-hidden"
-              style={{ background: "linear-gradient(180deg, #162544 0%, #0f172a 100%)" }}
+              style={{ background: "#0f172a" }}
             >
               <div className="p-5 space-y-1 max-h-[80vh] overflow-y-auto">
                 <Link href="/" onClick={() => setMobileOpen(false)}
@@ -294,7 +292,7 @@ export default function Navbar() {
                       className="block px-4 py-3 text-sm text-white/70 rounded-lg border border-white/10 text-center">Sign In</Link>
                   )}
                   <button onClick={() => { setMobileOpen(false); document.dispatchEvent(new Event("openQuoteModal")); }}
-                    className="block w-full px-4 py-3.5 bg-white text-[#0f172a] text-sm font-bold rounded-lg text-center hover:bg-[#67e500] transition-colors">
+                    className="block w-full px-4 py-3.5 bg-[#67e500] text-[#0f172a] text-sm font-bold rounded-lg text-center hover:bg-[#5acc00] transition-colors">
                     Get Started
                   </button>
                 </div>
