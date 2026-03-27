@@ -51,6 +51,41 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ClothingStore",
+              name: "Wearable Apparels",
+              description: "Premium custom apparel manufacturing for streetwear brands. Cut & sew, screen printing, embroidery, private labeling.",
+              url: "https://wearableapparels.com",
+              telephone: "+923000836201",
+              email: "info@wearableapparels.com",
+              address: { "@type": "PostalAddress", addressCountry: "PK" },
+              sameAs: [
+                "https://instagram.com/wearable_apparels",
+                "https://facebook.com/wearableapparels",
+                "https://tiktok.com/@wearable_apparels",
+              ],
+              priceRange: "$$",
+              openingHours: "Mo-Sa 09:00-18:00",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Custom Apparel Services",
+                itemListElement: [
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Cut & Sew" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Screen Printing" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Embroidery" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Private Labeling" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Packaging" } },
+                ],
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="antialiased">
         <SessionProvider>
           {children}

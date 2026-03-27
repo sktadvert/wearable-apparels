@@ -178,7 +178,7 @@ export default function Testimonials() {
           className="text-center max-w-3xl mx-auto mb-14 flex flex-col items-center"
         >
           <p className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3">Trusted Partners</p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
             Brands We&apos;ve Worked With
           </h2>
           <p className="text-slate-500 text-base">
@@ -212,7 +212,7 @@ export default function Testimonials() {
         >
           {chats.map((chat, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-[#0b141a] rounded-2xl overflow-hidden h-[360px] flex flex-col">
+              <div className="bg-[#0b141a] rounded-2xl overflow-hidden h-[320px] sm:h-[360px] flex flex-col">
                 {/* WhatsApp header */}
                 <div className="bg-[#1f2c34] px-4 py-3 flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full bg-[#67e500] flex items-center justify-center text-black text-xs font-bold">

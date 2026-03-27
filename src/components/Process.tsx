@@ -44,8 +44,8 @@ export default function Process() {
           className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center"
         >
           <p className="text-[#67e500] text-base md:text-lg tracking-widest uppercase font-bold mb-3">How It Works</p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">From Your Idea to Finished Product</h2>
-          <p className="text-slate-500 text-lg leading-relaxed">A simple 4-step process. No experience needed — we guide you through everything.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">From Your Idea to Finished Product</h2>
+          <p className="text-slate-500 text-base sm:text-lg leading-relaxed">A simple 4-step process. No experience needed — we guide you through everything.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

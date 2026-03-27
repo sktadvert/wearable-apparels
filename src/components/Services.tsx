@@ -6,32 +6,32 @@ const services = [
   {
     title: "Custom Cut & Sew",
     desc: "From your design to finished garment. T-shirts, hoodies, joggers, jackets — pattern making, grading, and full construction.",
-    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&q=90",
   },
   {
     title: "Screen Printing",
     desc: "Vibrant, durable prints in up to 12 colors. Plastisol, water-based, or discharge inks for graphic tees and streetwear.",
-    img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=400&fit=crop&q=90",
   },
   {
     title: "Embroidery",
     desc: "Premium embroidery for logos and artwork. Flat, 3D puff, and chain stitch. Clean stitching that lasts.",
-    img: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=600&h=400&fit=crop&q=90",
   },
   {
     title: "Private Labeling",
     desc: "Woven labels, hang tags, neck labels, care labels — complete branding for your clothing line.",
-    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop&q=90",
   },
   {
     title: "Custom Packaging",
     desc: "Branded polybags, tissue paper, stickers, mailer boxes. An unboxing experience your customers remember.",
-    img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1607166452427-7e4477c2f32b?w=600&h=400&fit=crop&q=90",
   },
   {
     title: "Fabric Sourcing",
     desc: "Premium fabrics worldwide. Cotton, French terry, fleece, nylon, custom blends — we find the right fabric.",
-    img: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=400&fit=crop",
+    img: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=400&fit=crop&q=90",
   },
 ];
 
@@ -46,10 +46,10 @@ export default function Services() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <p className="text-[#67e500] text-sm tracking-widest uppercase font-bold mb-4">Our Services</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0f172a] mb-5">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0f172a] mb-5">
             Everything You Need to Launch Your Line
           </h2>
-          <p className="text-slate-500 text-lg leading-relaxed">
+          <p className="text-slate-500 text-base sm:text-lg leading-relaxed">
             From a single design idea to a fully branded, packaged product ready to sell.
           </p>
         </motion.div>

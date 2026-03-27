@@ -57,16 +57,16 @@ const allOptions = [
 
 export default function Customization() {
   return (
-    <section className="py-20 bg-[#f8f8f8]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-12 sm:py-20 bg-[#f8f8f8]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header — same style as sialkotstride */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center max-w-3xl mx-auto mb-14"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl text-[#0f172a] mb-2">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#0f172a] mb-2">
             Customization <span className="font-extrabold italic">Options</span>
           </h2>
           <p className="text-[#006837] text-xl md:text-2xl font-medium">How We Work</p>
@@ -90,7 +90,7 @@ export default function Customization() {
         >
           {allOptions.map((item, i) => (
             <SwiperSlide key={item.title}>
-              <div className="bg-white rounded-2xl p-10 text-center shadow-sm border border-slate-100 hover:shadow-xl transition-all h-[400px] flex flex-col items-center justify-start relative">
+              <div className="bg-white rounded-2xl p-6 sm:p-10 text-center shadow-sm border border-slate-100 hover:shadow-xl transition-all h-[340px] sm:h-[400px] flex flex-col items-center justify-start relative">
                 {/* Number badge */}
                 <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#67e500] flex items-center justify-center text-black text-sm font-extrabold">
                   {String(i + 1).padStart(2, "0")}
@@ -103,7 +103,7 @@ export default function Customization() {
                     className="h-[84px] w-auto object-contain"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-[#0f172a] mb-4">{item.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] mb-4">{item.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             </SwiperSlide>
@@ -135,13 +135,23 @@ export default function Customization() {
           font-size: 18px;
           font-weight: bold;
         }
-        .customization-swiper .swiper-button-prev {
-          left: 0;
-          top: 45%;
-        }
+        .customization-swiper .swiper-button-prev,
         .customization-swiper .swiper-button-next {
-          right: 0;
-          top: 45%;
+          display: none;
+        }
+        @media (min-width: 640px) {
+          .customization-swiper .swiper-button-prev,
+          .customization-swiper .swiper-button-next {
+            display: flex;
+          }
+          .customization-swiper .swiper-button-prev {
+            left: 0;
+            top: 45%;
+          }
+          .customization-swiper .swiper-button-next {
+            right: 0;
+            top: 45%;
+          }
         }
         .customization-swiper .swiper-pagination {
           bottom: 12px !important;

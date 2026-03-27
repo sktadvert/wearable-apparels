@@ -21,37 +21,38 @@ export default function About() {
     <section id="about" className="section-pad bg-[#0f172a] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Top: Why Choose Us */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <p className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-4">Why Choose Us</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+            Manufacturing Partner That <span className="text-[#67e500]">Delivers Results</span>
+          </h2>
+          <p className="text-slate-400 text-base leading-relaxed mb-8">
+            We work exclusively with independent and emerging clothing brands — the ones
+            starting with 50-500 piece runs and growing into established labels. Your success is our business.
+          </p>
+          <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#67e500] text-black text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-[#5acc00] transition-all">
+            Let&apos;s Talk
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </motion.div>
+
+        {/* Feature cards */}
+        <div className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-          >
-            <p className="text-[#67e500] text-base md:text-lg tracking-[0.3em] uppercase font-bold mb-4">Why Choose Us</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-              Manufacturing Partner That <span className="text-[#67e500]">Delivers Results</span>
-            </h2>
-            <p className="text-slate-400 text-base leading-relaxed mb-8">
-              We work exclusively with independent and emerging clothing brands — the ones
-              starting with 50-500 piece runs and growing into established labels. Your success is our business.
-            </p>
-            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#67e500] text-black text-sm font-bold uppercase tracking-wider rounded-xl hover:bg-[#5acc00] transition-all">
-              Let&apos;s Talk
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </motion.div>
-
-          {/* Feature cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
           >
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`p-6 rounded-2xl border border-white/[0.06] hover:border-[#67e500]/30 transition-all ${
+                className={`p-4 sm:p-6 rounded-2xl border border-white/[0.06] hover:border-[#67e500]/30 transition-all ${
                   i === 0 ? "bg-[#67e500] text-black border-transparent" : "bg-white/[0.03]"
                 }`}
               >
@@ -73,12 +74,12 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-10"
+          className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-10"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <p className="text-4xl lg:text-5xl font-extrabold text-[#67e500] mb-2">{s.value}</p>
+                <p className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#67e500] mb-2">{s.value}</p>
                 <p className="text-slate-500 text-sm uppercase tracking-wider">{s.label}</p>
               </div>
             ))}

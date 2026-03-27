@@ -15,7 +15,7 @@ const slides = [
     line2: "JOGGERS",
   },
   {
-    img: "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=1920&h=1080&fit=crop&crop=top&q=90",
+    img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=1920&h=1080&fit=crop&crop=faces&q=90",
     line1: "CUSTOM",
     line2: "T-SHIRTS",
   },
@@ -76,12 +76,12 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] text-white tracking-tight"
+            <h1 className="text-[3rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] text-white tracking-tight"
               style={{ textShadow: "0 4px 20px rgba(0,0,0,0.4)" }}
             >
               {slide.line1}
             </h1>
-            <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] tracking-tight"
+            <h1 className="text-[3rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] font-black leading-[0.9] tracking-tight"
               style={{ color: "transparent", WebkitTextStroke: "2px rgba(255,255,255,0.5)" }}
             >
               {slide.line2}
@@ -93,19 +93,19 @@ export default function Hero() {
       {/* Left/Right arrows */}
       <button
         onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="group-hover:stroke-black"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
       </button>
       <button
         onClick={() => setCurrent((current + 1) % slides.length)}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-[#67e500] hover:border-[#67e500] transition-all group"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="group-hover:stroke-black"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
       </button>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-[220px] lg:bottom-[200px] left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-24 sm:bottom-[220px] lg:bottom-[200px] left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, i) => (
           <button key={i} onClick={() => setCurrent(i)}
             className={`h-1 rounded-full transition-all duration-300 ${i === current ? "w-10 bg-[#67e500]" : "w-6 bg-white/30"}`}
@@ -113,21 +113,21 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Bottom-right feature tiles */}
-      <div className="absolute bottom-0 right-0 z-20 hidden lg:flex">
+      {/* Bottom feature tiles — mobile horizontal strip */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 flex lg:left-auto lg:right-0 lg:w-auto">
         {features.map((f, i) => (
           <div key={f.num}
-            className={`px-10 py-10 w-[280px] ${
-              i === 0 ? "bg-[#67e500] text-black rounded-tl-[40px]"
+            className={`flex-1 lg:flex-none px-4 py-4 sm:px-10 sm:py-10 lg:w-[280px] ${
+              i === 0 ? "bg-[#67e500] text-black lg:rounded-tl-[40px]"
               : i === 1 ? "bg-[#006837] text-white"
               : "bg-[#004c28] text-white"
             }`}
           >
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold mb-5 border-2 ${
+            <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold mb-2 sm:mb-5 border-2 ${
               i === 0 ? "bg-transparent border-black/20 text-black" : "bg-transparent border-[#67e500]/40 text-[#67e500]"
             }`}>{f.num}</div>
-            <h3 className="text-xl font-extrabold mb-2">{f.title}</h3>
-            <p className={`text-sm leading-relaxed ${i === 0 ? "text-black/60" : "text-white/60"}`}>{f.desc}</p>
+            <h3 className="text-sm sm:text-xl font-extrabold mb-1 sm:mb-2">{f.title}</h3>
+            <p className={`text-xs sm:text-sm leading-relaxed hidden sm:block ${i === 0 ? "text-black/60" : "text-white/60"}`}>{f.desc}</p>
           </div>
         ))}
       </div>
