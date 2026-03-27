@@ -1,0 +1,52 @@
+version: "3.8"
+
+# VPS Production Deployment
+# Uses existing: Traefik (reverse proxy), PostgreSQL (helloo-postgres)
+# Run with: docker compose -f docker-compose.vps.yml up -d
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wearable_app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://helloo:helloo_secure_2026@helloo-postgres:5432/wearable_apparels
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: https://wearableapparels.com
+      NEXT_PUBLIC_APP_URL: https://wearableapparels.com
+      NEXT_PUBLIC_APP_NAME: Wearable Apparels
+      LISTMONK_URL: ${LISTMONK_URL:-http://listmonk:9000}
+      LISTMONK_USER: ${LISTMONK_USER:-admin}
+      LISTMONK_PASSWORD: ${LISTMONK_PASSWORD:-}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-info@wearableapparels.com}
+      NEXT_PUBLIC_UMAMI_URL: ${NEXT_PUBLIC_UMAMI_URL:-}
+      NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${NEXT_PUBLIC_UMAMI_WEBSITE_ID:-}
+    volumes:
+      - uploads:/app/public/uploads
+    networks:
+      - proxy
+      - helloo_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wearable.rule=Host(`wearableapparels.com`) || Host(`www.wearableapparels.com`)"
+      - "traefik.http.routers.wearable.entrypoints=websecure"
+      - "traefik.http.routers.wearable.tls.certresolver=letsencrypt"
+      - "traefik.http.services.wearable.loadbalancer.server.port=3000"
+      # Redirect www to non-www
+      - "traefik.http.middlewares.wearable-www-redirect.redirectregex.regex=^https://www.wearableapparels.com/(.*)"
+      - "traefik.http.middlewares.wearable-www-redirect.redirectregex.replacement=https://wearableapparels.com/$${1}"
+      - "traefik.http.middlewares.wearable-www-redirect.redirectregex.permanent=true"
+      - "traefik.http.routers.wearable.middlewares=wearable-www-redirect"
+
+volumes:
+  uploads:
+    driver: local
+
+networks:
+  proxy:
+    external: true
+  helloo_network:
+    external: true
