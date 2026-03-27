@@ -76,8 +76,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 shrink-0">
-              <div className="w-9 h-9 rounded-lg bg-[#67e500] flex items-center justify-center text-[#0f172a] font-extrabold text-[11px]">
-                WA
+              <div className="w-11 h-11 flex items-center justify-center">
+                <img src="/images/wa-icon.png" alt="Wearable Apparels" className="w-full h-full object-contain" style={{filter: "invert(1)"}} />
               </div>
               <span className="text-sm font-bold text-white hidden sm:block">
                 WEARABLE APPARELS
@@ -130,8 +130,9 @@ export default function Navbar() {
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => document.dispatchEvent(new Event("openQuoteModal"))}
-                className="hidden md:inline-flex px-5 py-2 bg-[#67e500] text-[#0f172a] text-xs font-bold uppercase tracking-wider rounded hover:bg-[#5acc00] transition-all cursor-pointer">
-                Get Started
+                className="hidden md:inline-flex items-center gap-2 px-7 py-3 bg-[#67e500] text-[#0f172a] text-sm font-extrabold uppercase tracking-wider rounded-md hover:bg-[#5acc00] hover:shadow-[0_0_20px_rgba(103,229,0,0.4)] transition-all cursor-pointer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                GET STARTED
               </button>
               <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden w-9 h-9 flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
@@ -227,7 +228,7 @@ export default function Navbar() {
               <a href="#portfolio" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">Portfolio</a>
               <a href="#about" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">About Us</a>
               <a href="#contact" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">Contact</a>
-              <Link href="/#quote" onClick={() => setMobileOpen(false)} className="block mt-2 px-4 py-3 bg-[#67e500] text-[#0f172a] text-sm font-bold rounded-lg text-center">Get Started</Link>
+              <button onClick={() => { setMobileOpen(false); document.dispatchEvent(new Event("openQuoteModal")); }} className="block w-full mt-2 px-4 py-4 bg-[#67e500] text-[#0f172a] text-sm font-extrabold uppercase tracking-wider rounded-lg text-center">🚀 GET STARTED</button>
             </div>
           </motion.div>
         )}

@@ -6,6 +6,10 @@ import QuoteModal from "@/components/QuoteModal";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   title: "Wearable Apparels | Custom Apparel Manufacturing",
   description:
     "Premium custom cut & sew manufacturing for streetwear brands. Low MOQ, fast turnaround, quality-first production. Request a free quote today.",

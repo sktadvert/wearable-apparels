@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "50+", label: "Brands Served" },
+  { value: "150+", label: "Brands Served" },
   { value: "10,000+", label: "Pieces Produced" },
   { value: "6+", label: "Countries Shipped" },
   { value: "100%", label: "QC Inspection" },

@@ -10,7 +10,7 @@ const features = [
 ];
 
 const stats = [
-  { value: "50+", label: "Brands Worldwide" },
+  { value: "150+", label: "Brands Worldwide" },
   { value: "10K+", label: "Garments Delivered" },
   { value: "6+", label: "Countries Served" },
   { value: "98%", label: "Client Satisfaction" },

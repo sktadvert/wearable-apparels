@@ -9,6 +9,7 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import PaymentOptions from "@/components/PaymentOptions";
+import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/marketing/SmoothScroll";
@@ -29,6 +30,7 @@ export default function Home() {
         <Testimonials />
         <About />
         <PaymentOptions />
+        <FAQ />
         <CTASection />
         <Footer />
         <RFQBanner />

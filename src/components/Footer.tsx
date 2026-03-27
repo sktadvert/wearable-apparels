@@ -10,8 +10,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-[#0f172a] flex items-center justify-center text-white font-extrabold text-xs">
-                WA
+              <div className="w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 p-1">
+                <img src="/images/wa-icon.png" alt="WA" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="text-base font-bold text-[#0f172a] block leading-tight">WEARABLE APPARELS</span>

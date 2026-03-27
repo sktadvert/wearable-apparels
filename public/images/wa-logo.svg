@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" fill="none">
+  <!-- W shape -->
+  <path d="M10 10 L30 90 L55 40 L80 90 L100 10" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- A shape overlapping -->
+  <path d="M85 90 L120 10 L155 90 M97 60 L143 60" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
