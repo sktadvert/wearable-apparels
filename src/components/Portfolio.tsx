@@ -51,8 +51,8 @@ export default function Portfolio() {
                   </span>
                 </div>
               </div>
-              <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#67e500] transition-colors">{p.title}</h3>
-              <p className="text-slate-400 text-xs mt-1">{p.client}</p>
+              <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#67e500] transition-colors text-center">{p.title}</h3>
+              <p className="text-slate-400 text-xs mt-1 text-center">{p.client}</p>
             </motion.div>
           ))}
         </div>

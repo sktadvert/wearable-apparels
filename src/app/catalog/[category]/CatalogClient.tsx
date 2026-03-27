@@ -22,7 +22,7 @@ export default function CatalogClient({
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-lg bg-[#c8a97e] flex items-center justify-center text-[#0f172a] font-extrabold text-[11px]">
+              <div className="w-9 h-9 rounded-lg bg-[#67e500] flex items-center justify-center text-[#0f172a] font-extrabold text-[11px]">
                 WA
               </div>
               <span className="text-[15px] font-semibold text-white hidden sm:block">
@@ -36,7 +36,7 @@ export default function CatalogClient({
               <Link href="/#services" className="text-slate-400 text-sm hover:text-white transition-colors">
                 Services
               </Link>
-              <Link href="/#quote" className="px-5 py-2.5 bg-[#c8a97e] text-[#0f172a] text-[13px] font-bold rounded-lg hover:bg-[#b8956a] transition-all">
+              <Link href="/#quote" className="px-5 py-2.5 bg-[#006837] text-white text-[13px] font-bold rounded-lg hover:bg-[#005a2f] transition-all">
                 Get a Quote
               </Link>
             </div>
@@ -47,7 +47,7 @@ export default function CatalogClient({
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-slate-400 mb-8">
-          <Link href="/" className="hover:text-[#c8a97e] transition-colors">Home</Link>
+          <Link href="/" className="hover:text-[#67e500] transition-colors">Home</Link>
           <span>/</span>
           <span className="text-[#0f172a] font-medium">{category.name}</span>
         </div>
@@ -92,7 +92,7 @@ export default function CatalogClient({
               className="group cursor-pointer"
             >
               {/* Image */}
-              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-[#f7f5f2] mb-3 relative border border-slate-100 group-hover:border-[#c8a97e]/30 transition-all">
+              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-[#f7f5f2] mb-3 relative border border-slate-100 group-hover:border-[#67e500]/30 transition-all">
                 <img
                   src={product.img}
                   alt={product.name}
@@ -102,7 +102,7 @@ export default function CatalogClient({
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Link
                     href="/#quote"
-                    className="bg-[#c8a97e] text-[#0f172a] text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md"
+                    className="bg-[#006837] text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md"
                   >
                     Get Quote
                   </Link>
@@ -110,8 +110,8 @@ export default function CatalogClient({
               </div>
 
               {/* Info */}
-              <p className="text-[#c8a97e] text-xs font-semibold mb-0.5">{product.brand}</p>
-              <h3 className="text-sm font-semibold text-[#0f172a] mb-1.5 group-hover:text-[#c8a97e] transition-colors">
+              <p className="text-[#67e500] text-xs font-semibold mb-0.5">{product.brand}</p>
+              <h3 className="text-sm font-semibold text-[#0f172a] mb-1.5 group-hover:text-[#67e500] transition-colors">
                 {product.name}
               </h3>
 
@@ -161,7 +161,7 @@ export default function CatalogClient({
           </p>
           <Link
             href="/#quote"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#c8a97e] text-[#0f172a] text-sm font-bold rounded-xl hover:bg-[#b8956a] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#006837] text-white text-sm font-bold rounded-xl hover:bg-[#005a2f] transition-all"
           >
             Request a Custom Quote →
           </Link>

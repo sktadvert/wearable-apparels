@@ -42,7 +42,7 @@ export default function About() {
         </motion.div>
 
         {/* Feature cards */}
-        <div className="mb-20">
+        <div className="mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,12 +58,12 @@ export default function About() {
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke={i === 0 ? "black" : "#67e500"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                  className="mb-4"
+                  className="mb-4 mx-auto"
                 >
                   <path d={f.icon} />
                 </svg>
-                <h4 className={`text-sm font-bold mb-2 ${i === 0 ? "text-black" : "text-white"}`}>{f.title}</h4>
-                <p className={`text-xs leading-relaxed ${i === 0 ? "text-black/60" : "text-slate-500"}`}>{f.desc}</p>
+                <h4 className={`text-sm font-bold mb-2 text-center ${i === 0 ? "text-black" : "text-white"}`}>{f.title}</h4>
+                <p className={`text-xs leading-relaxed text-center ${i === 0 ? "text-black/60" : "text-slate-500"}`}>{f.desc}</p>
               </div>
             ))}
           </motion.div>

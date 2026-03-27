@@ -48,7 +48,7 @@ export default function Process() {
           <p className="text-slate-500 text-base sm:text-lg leading-relaxed">A simple 4-step process. No experience needed — we guide you through everything.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
@@ -61,12 +61,10 @@ export default function Process() {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-5 relative">
                 <img src={step.img} alt={step.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-extrabold" style={{ backgroundColor: step.color }}>
-                  {step.num}
-                </div>
+{/* Number badge removed */}
               </div>
-              <h3 className="text-lg font-bold text-[#0f172a] mb-2">{step.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+              <h3 className="text-lg font-bold text-[#0f172a] mb-2 text-center">{step.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed text-center">{step.desc}</p>
             </motion.div>
           ))}
         </div>

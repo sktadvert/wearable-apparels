@@ -91,10 +91,6 @@ export default function Customization() {
           {allOptions.map((item, i) => (
             <SwiperSlide key={item.title}>
               <div className="bg-white rounded-2xl p-6 sm:p-10 text-center shadow-sm border border-slate-100 hover:shadow-xl transition-all h-[340px] sm:h-[400px] flex flex-col items-center justify-start relative">
-                {/* Number badge */}
-                <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#67e500] flex items-center justify-center text-black text-sm font-extrabold">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
                 {/* Icon */}
                 <div className="flex justify-center mb-8 h-[100px] items-center">
                   <img
@@ -103,8 +99,8 @@ export default function Customization() {
                     className="h-[84px] w-auto object-contain"
                   />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] mb-4">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] mb-4 text-center">{item.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed text-center">{item.desc}</p>
               </div>
             </SwiperSlide>
           ))}

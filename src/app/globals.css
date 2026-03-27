@@ -30,8 +30,8 @@ body {
   color: #000;
 }
 
-.section-pad { padding: 5rem 1.5rem; }
-@media (min-width: 1024px) { .section-pad { padding: 7rem 2rem; } }
+.section-pad { padding: 3.5rem 1.5rem; }
+@media (min-width: 1024px) { .section-pad { padding: 5rem 2rem; } }
 
 .card-hover { transition: all 0.3s ease; }
 .card-hover:hover {

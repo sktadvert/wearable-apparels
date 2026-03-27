@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-gradient-to-br from-[#0f172a] via-[#162033] to-[#0f172a] rounded-3xl py-12 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-16 text-center relative overflow-hidden">
+    <section className="mb-12 sm:mb-16">
+      <div>
+        <div className="bg-gradient-to-br from-[#0f172a] via-[#162033] to-[#0f172a] py-12 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-16 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#67e500]/[0.04] rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#006837]/[0.06] rounded-full blur-[100px]" />
 
@@ -46,7 +46,7 @@ export default function CTASection() {
                   <div className="w-10 h-10 rounded-full bg-[#67e500]/10 flex items-center justify-center shrink-0">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#67e500" strokeWidth="2"><path d={item.icon} /></svg>
                   </div>
-                  <div className="text-left">
+                  <div className="text-center">
                     <p className="text-white text-sm font-bold">{item.title}</p>
                     <p className="text-slate-500 text-xs">{item.desc}</p>
                   </div>
