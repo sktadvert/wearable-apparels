@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const products = [
   { name: "T-Shirts", desc: "T-Shirt Manufacturers", href: "/catalog/tshirts" },
@@ -37,6 +38,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<MenuKey>(null);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -128,6 +130,20 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-3 shrink-0">
+              {/* Login / Dashboard link */}
+              {session ? (
+                <Link href="/dashboard"
+                  className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#67e500] border border-[#67e500]/30 rounded-md hover:bg-[#67e500]/10 transition-all">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  Dashboard
+                </Link>
+              ) : (
+                <Link href="/login"
+                  className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/60 border border-white/10 rounded-md hover:text-white hover:border-white/30 transition-all">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Client Login
+                </Link>
+              )}
               <button
                 onClick={() => document.dispatchEvent(new Event("openQuoteModal"))}
                 className="hidden md:inline-flex items-center gap-2 px-7 py-3 bg-[#67e500] text-[#0f172a] text-sm font-extrabold uppercase tracking-wider rounded-md hover:bg-[#5acc00] hover:shadow-[0_0_20px_rgba(103,229,0,0.4)] transition-all cursor-pointer">
@@ -228,6 +244,11 @@ export default function Navbar() {
               <a href="#portfolio" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">Portfolio</a>
               <a href="#about" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">About Us</a>
               <a href="#contact" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white rounded-lg">Contact</a>
+              {session ? (
+                <Link href="/dashboard" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-[#67e500] font-bold rounded-lg border border-[#67e500]/20">📊 My Dashboard</Link>
+              ) : (
+                <Link href="/login" onClick={() => setMobileOpen(false)} className="block px-4 py-3 text-sm text-white/60 rounded-lg border border-white/10">Client Login</Link>
+              )}
               <button onClick={() => { setMobileOpen(false); document.dispatchEvent(new Event("openQuoteModal")); }} className="block w-full mt-2 px-4 py-4 bg-[#67e500] text-[#0f172a] text-sm font-extrabold uppercase tracking-wider rounded-lg text-center">🚀 GET STARTED</button>
             </div>
           </motion.div>
